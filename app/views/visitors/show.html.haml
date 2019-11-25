@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @visitor.name
+%p
+  %b Credential:
+  = @visitor.credential
+%p
+  %b Schedule:
+  = @visitor.schedule
+
+= link_to 'Edit', edit_visitor_path(@visitor)
+\|
+= link_to 'Back', visitors_path

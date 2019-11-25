@@ -1,0 +1,38 @@
+
+%h1 Scheduler
+%hr
+= form_with url: '/schedule' do
+  %h3 Host:
+  %table
+    %tr
+      %td= label_tag :host_field1, 'field1:'
+      %td= text_field_tag :host_field1
+    %tr
+      %td= label_tag :host_field2, 'field2:'
+      %td= text_field_tag :host_field2
+    %tr
+      %td= label_tag :host_field3, 'field3:'
+      %td= text_field_tag :host_field3
+    %tr
+      %td= label_tag :host_field4, 'field4:'
+      %td= text_field_tag :host_field4
+
+  %h3 Visitors:
+  %table
+    %tr
+      %td= label_tag "visitor1_field1", 'field1:'
+      %td= text_field_tag :visitor1_field1
+    %tr
+      %td= label_tag :visitor1_field2, 'field2:'
+      %td= text_field_tag :visitor1_field2
+    %tr
+      %td= label_tag :visitor1_field3, 'field3:'
+      %td= text_field_tag :visitor1_field3
+    %tr
+      %td= label_tag :visitor1_field4, 'field4:'
+      %td= text_field_tag :visitor1_field4
+  %h3 Schedule:
+  %p= datetime_select DateTime::now, prefix: :visit_datetime
+  %br
+  = submit_tag 'Schedule'
+

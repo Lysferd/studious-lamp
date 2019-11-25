@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @host.name
+%p
+  %b Credential:
+  = @host.credential
+%p
+  %b Schedule:
+  = @host.schedule
+
+= link_to 'Edit', edit_host_path(@host)
+\|
+= link_to 'Back', hosts_path

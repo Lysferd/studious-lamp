@@ -1,0 +1,15 @@
+%h3 A new schedule is waiting approval
+
+%p
+  = @schedule.host.name
+  scheduled a meeting with
+  - @schedule.visitors.each do |v|
+    = v.name
+    - unless @schedule.visitors.last == v
+      ,
+  at
+  = @schedule.datetime
+
+%p= link_to 'Click here to approve', root_url
+
+%sub This is an automated email. Do not reply.
