@@ -1,4 +1,4 @@
-class ScheduleMailer < ApplicationMailer
+class SchedulingMailer < ApplicationMailer
   default from: 'fabio@moritzalmeida.eng.br'
 
   def schedule_email

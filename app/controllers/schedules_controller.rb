@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :new, :create, :show ]
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   # GET /schedules
@@ -30,7 +31,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
-        ScheduleMailer.with(schedule: @schedule).schedule_email.deliver_now
+        SchedulingMailer.with(schedule: @schedule).schedule_email.deliver_now
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
       else
