@@ -28,7 +28,7 @@ class HostsController < ApplicationController
 
     respond_to do |format|
       if @host.save
-        format.html { redirect_to @host, notice: 'Host was successfully created.' }
+        format.html { redirect_to @host, notice: 'Anfitrião criado com sucesso.' }
         format.json { render :show, status: :created, location: @host }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class HostsController < ApplicationController
   def update
     respond_to do |format|
       if @host.update(host_params)
-        format.html { redirect_to @host, notice: 'Host was successfully updated.' }
+        format.html { redirect_to @host, notice: 'Anfitrião atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @host }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class HostsController < ApplicationController
   def destroy
     @host.destroy
     respond_to do |format|
-      format.html { redirect_to hosts_url, notice: 'Host was successfully destroyed.' }
+      format.html { redirect_to hosts_url, notice: 'Anfitrião apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

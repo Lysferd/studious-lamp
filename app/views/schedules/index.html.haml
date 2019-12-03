@@ -17,7 +17,7 @@
         %td
           - schedule.visitors.each do |v|
             = link_to v.name, v
-        %td= schedule.approved
+        %td= schedule.approved ? 'Sim' : 'Não'
         %td
           = link_to 'Detalhes', schedule
           = link_to 'Editar', edit_schedule_path(schedule)

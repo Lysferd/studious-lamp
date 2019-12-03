@@ -1,10 +1,31 @@
 .container-show
-  %p#notice= notice
+  //%p#notice= notice
 
+  %h3 Detalhes da visita:
   %p
     %b Data e hora:
     = @schedule.datetime
+  %p
+    %b Anfitrião:
+    - if current_user
+      = link_to @schedule.host.name, @schedule.host
+    - else
+      = @schedule.host.name
+  %p
+    %b Visitante(s):
+    - @schedule.visitors.each do |v|
+      - if current_user
+        = link_to v.name, v
+      - else
+        = v.name
+      %br
+  %p
+    %b Status de Aprovação:
+    = @schedule.approved ? 'Aprovado' : 'Pendente'
 
-  = link_to 'Editar', edit_schedule_path(@schedule)
-  \|
-  = link_to 'Voltar', schedules_path
+  - if current_user
+    - unless @schedule.approved
+      = button_to 'Aprovar Agendamento', ''
+    = link_to 'Editar', edit_schedule_path(@schedule)
+    \|
+    = link_to 'Voltar', schedules_path

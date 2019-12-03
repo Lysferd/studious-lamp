@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :new, :create, :show ]
 
   # POST /create
   def create

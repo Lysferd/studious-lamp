@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :new, :create, :show ]
+  skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   # GET /schedules
@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       if @schedule.save
         SchedulingMailer.with(schedule: @schedule).schedule_email.deliver_now
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+        format.html { redirect_to @schedule, notice: 'Agendamento criado com sucesso.' }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to @schedule, notice: 'Agendamento atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule.destroy
     respond_to do |format|
-      format.html { redirect_to schedules_url, notice: 'Schedule was successfully destroyed.' }
+      format.html { redirect_to schedules_url, notice: 'Agendamento apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -1,5 +1,5 @@
 .container-show
-  %p#notice= notice
+  //%p#notice= notice
 
   %p
     %b Nome:
@@ -8,8 +8,7 @@
     %b Credencial:
     = @visitor.credential
   %p
-    %b Agendamentos:
-    = @visitor.schedule
+    = link_to 'Agendamento', @visitor.schedule
 
   = link_to 'Editar', edit_visitor_path(@visitor)
   \|

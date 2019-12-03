@@ -13,7 +13,7 @@
       %tr
         %td= host.name
         %td= host.credential
-        %td= host.schedule
+        %td= link_to host.schedule.datetime, host.schedule
         %td
           = link_to 'Detalhar', host
           = link_to 'Editar', edit_host_path(host)

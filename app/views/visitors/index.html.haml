@@ -13,7 +13,7 @@
       %tr
         %td= visitor.name
         %td= visitor.credential
-        %td= visitor.schedule
+        %td= link_to visitor.schedule.datetime, visitor.schedule
         %td
           = link_to 'Detalhes', visitor
           = link_to 'Editar', edit_visitor_path(visitor)

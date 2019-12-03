@@ -9,10 +9,10 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
-      = link_to 'Anfitriões', hosts_path
-      = link_to 'Visitantes', visitors_path
-      = link_to 'Agendamentos', schedules_path
       - if current_user
+        = link_to 'Anfitriões', hosts_path
+        = link_to 'Visitantes', visitors_path
+        = link_to 'Agendamentos', schedules_path
         = link_to 'Sair', destroy_user_session_path, method: :delete
       %p#notice= notice
       %p#alert= alert

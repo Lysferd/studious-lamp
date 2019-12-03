@@ -28,7 +28,7 @@ class VisitorsController < ApplicationController
 
     respond_to do |format|
       if @visitor.save
-        format.html { redirect_to @visitor, notice: 'Visitor was successfully created.' }
+        format.html { redirect_to @visitor, notice: 'Visitante criado com sucesso.' }
         format.json { render :show, status: :created, location: @visitor }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class VisitorsController < ApplicationController
   def update
     respond_to do |format|
       if @visitor.update(visitor_params)
-        format.html { redirect_to @visitor, notice: 'Visitor was successfully updated.' }
+        format.html { redirect_to @visitor, notice: 'Visitante atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @visitor }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class VisitorsController < ApplicationController
   def destroy
     @visitor.destroy
     respond_to do |format|
-      format.html { redirect_to visitors_url, notice: 'Visitor was successfully destroyed.' }
+      format.html { redirect_to visitors_url, notice: 'Visitante apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

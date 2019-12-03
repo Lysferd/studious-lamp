@@ -23,6 +23,21 @@
     margin: auto
     width: auto
 
+.small-container
+  margin: auto
+  text-align:center
+  display: inline-block
+  margin-top: 32px
+  a
+    &:hover
+      color: black
+      background-color: transparent
+  .half-r
+    margin-left: auto
+    float: right
+  .half-l
+    margin-right: auto
+    float: left
 
 form
   border: 1px dotted black
@@ -32,6 +47,11 @@ form
 
 .container-show
   @extend .container, form
+  form
+    border: none
+    padding: 10px
+    width: auto
+    margin: auto
 
 button
   float: right

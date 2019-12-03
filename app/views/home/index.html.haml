@@ -1,2 +1,11 @@
-.container
-  %h1 Visitor
+%h1 Agendamento de Visitas
+
+.small-container
+  .half-r
+    = link_to new_schedule_path do
+      = image_tag "round_schedule_black_48dp.png"
+      %br Nova Visita
+  .half-l
+    = link_to new_user_session_path do
+      = image_tag "round_account_circle_black_48dp.png"
+      %br Logar
