@@ -1,37 +1,38 @@
-= form_for @schedule do |f|
-  - if @schedule.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@schedule.errors.count, "error")} prohibited this schedule from being saved:"
-      %ul
-        - @schedule.errors.full_messages.each do |message|
-          %li= message
+.container
+  = form_for @schedule do |f|
+    - if @schedule.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@schedule.errors.count, "error")} prohibited this schedule from being saved:"
+        %ul
+          - @schedule.errors.full_messages.each do |message|
+            %li= message
 
-  .field
-    = f.label :datetime
-    = f.datetime_select :datetime
-  
-  %h3 Host:
-  = f.fields_for :host do |h|
     .field
-      = h.label :name
-      = h.text_field :name
-    .field
-      = h.label :credential
-      = h.text_field :credential
-    .field
-      = h.label :email
-      = h.text_field :email
+      = f.label :datetime, "Data e hora"
+      = f.datetime_select :datetime
+    
+    %h3 Anfitrião:
+    = f.fields_for :host do |h|
+      .field
+        = h.label :name, "Nome"
+        = h.text_field :name
+      .field
+        = h.label :credential, "Credencial"
+        = h.text_field :credential
+      .field
+        = h.label :email
+        = h.text_field :email
 
-  %h3 Visitors:
-  = f.fields_for :visitors do |v|
-    .field
-      = v.label :name
-      = v.text_field :name
-    .field
-      = v.label :credential
-      = v.text_field :credential
-    .field
-      = v.label :email
-      = v.text_field :email
-  .actions
-    = f.submit 'Save'
+    %h3 Visitantes:
+    = f.fields_for :visitors do |v|
+      .field
+        = v.label :name, "Nome"
+        = v.text_field :name
+      .field
+        = v.label :credential, "Credencial"
+        = v.text_field :credential
+      .field
+        = v.label :email
+        = v.text_field :email
+    .actions
+      = f.submit 'Salvar'

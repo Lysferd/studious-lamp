@@ -1,15 +1,15 @@
-%h3 A new schedule is waiting approval
+%h3 Um novo agendamento esta aguardando aprovação
 
 %p
   = @schedule.host.name
-  scheduled a meeting with
+  agendou uma reunião com
   - @schedule.visitors.each do |v|
     = v.name
     - unless @schedule.visitors.last == v
       ,
-  at
+  em
   = @schedule.datetime
 
-%p= link_to 'Click here to approve', @schedule
+%p= link_to 'Clique aqui para aprovar', @schedule
 
-%sub This is an automated email. Do not reply.
+%sub Esse é um email automático. Por favor não responda.

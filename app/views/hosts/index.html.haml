@@ -1,14 +1,12 @@
-%h1 Listing hosts
+%h1 Lista de Anfitriões
 
-%table
+%table(border)
   %thead
     %tr
-      %th Name
-      %th Credential
-      %th Schedule
-      %th
-      %th
-      %th
+      %th Nome
+      %th Credencial
+      %th Agendamentos
+      %th Opções
 
   %tbody
     - @hosts.each do |host|
@@ -16,10 +14,11 @@
         %td= host.name
         %td= host.credential
         %td= host.schedule
-        %td= link_to 'Show', host
-        %td= link_to 'Edit', edit_host_path(host)
-        %td= link_to 'Destroy', host, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to 'Detalhar', host
+          = link_to 'Editar', edit_host_path(host)
+          = link_to 'Apagar', host, method: :delete, data: { confirm: 'Você tem certeza?' }
 
 %br
 
-= link_to 'New Host', new_host_path
+= link_to 'Novo Anfitrião', new_host_path

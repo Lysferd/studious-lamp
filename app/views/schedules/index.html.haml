@@ -1,13 +1,13 @@
-%h1 Listing schedules
+%h1 Listando agendamentos
 
 %table(border)
   %thead
     %tr
-      %th Datetime
-      %th Host
-      %th Visitors
-      %th Approved
-      %th Options
+      %th Data e Hora
+      %th Anfitrião
+      %th Visitante(s)
+      %th Aprovado
+      %th Opções
 
   %tbody
     - @schedules.each do |schedule|
@@ -19,10 +19,10 @@
             = link_to v.name, v
         %td= schedule.approved
         %td
-          = link_to 'Show', schedule
-          = link_to 'Edit', edit_schedule_path(schedule)
-          = link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Detalhes', schedule
+          = link_to 'Editar', edit_schedule_path(schedule)
+          = link_to 'Apagar', schedule, method: :delete, data: { confirm: 'Tem certeza disso?' }
 
 %br
 
-= link_to 'New Schedule', new_schedule_path
+= link_to 'Novo Agendamento', new_schedule_path

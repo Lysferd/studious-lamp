@@ -2,10 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.checkbox_field
+  label
+    display: inline-block
+    margin-bottom: 10px
+
+
+.container, .field
+  margin: auto
+  min-width: 500px
+  width: auto
+  text-align: center
+  table
+    margin: auto
+    width: auto
+    table-layout: auto
+    min-width: 500px
+    padding: 10px
+  .field_with_errors
+    margin: auto
+    width: auto
+
+
 form
   border: 1px dotted black
   padding: 10px
   width: 500px
+  margin: auto
+
+.container-show
+  @extend .container, form
 
 button
   float: right

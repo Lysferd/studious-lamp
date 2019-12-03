@@ -1,14 +1,12 @@
-%h1 Listing visitors
+%h1 Lista de visitantes
 
-%table
+%table(border)
   %thead
     %tr
-      %th Name
-      %th Credential
-      %th Schedule
-      %th
-      %th
-      %th
+      %th Nome
+      %th Credencial
+      %th Agendamentos
+      %th Opções
 
   %tbody
     - @visitors.each do |visitor|
@@ -16,10 +14,11 @@
         %td= visitor.name
         %td= visitor.credential
         %td= visitor.schedule
-        %td= link_to 'Show', visitor
-        %td= link_to 'Edit', edit_visitor_path(visitor)
-        %td= link_to 'Destroy', visitor, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to 'Detalhes', visitor
+          = link_to 'Editar', edit_visitor_path(visitor)
+          = link_to 'Apagar', visitor, method: :delete, data: { confirm: 'Você tem certeza?' }
 
 %br
 
-= link_to 'New Visitor', new_visitor_path
+= link_to 'Novo visitante', new_visitor_path

@@ -1,15 +1,16 @@
-%p#notice= notice
+.container-show
+  %p#notice= notice
 
-%p
-  %b Name:
-  = @visitor.name
-%p
-  %b Credential:
-  = @visitor.credential
-%p
-  %b Schedule:
-  = @visitor.schedule
+  %p
+    %b Nome:
+    = @visitor.name
+  %p
+    %b Credencial:
+    = @visitor.credential
+  %p
+    %b Agendamentos:
+    = @visitor.schedule
 
-= link_to 'Edit', edit_visitor_path(@visitor)
-\|
-= link_to 'Back', visitors_path
+  = link_to 'Editar', edit_visitor_path(@visitor)
+  \|
+  = link_to 'Voltar', visitors_path

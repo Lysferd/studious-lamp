@@ -1,0 +1,8 @@
+%p
+  Olá #{@email}!
+- if @resource.try(:unconfirmed_email?)
+  %p
+    Estamos entrando em contato para lhe notificar que o seu email está sendo mudado para #{@resource.unconfirmed_email}.
+- else
+  %p
+    Estamos entrando em contato para lhe notificar que o seu email foi mudado para #{@resource.email}.
