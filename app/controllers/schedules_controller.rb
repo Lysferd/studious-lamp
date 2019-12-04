@@ -72,7 +72,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if schedule.update( approved: true )
-        SchedulingMailer.with(schedule: @schedule).approval_email.deliver_now
+        SchedulingMailer.with(schedule: schedule).approval_email.deliver_now
         format.html { redirect_to schedule }
       end
     end
