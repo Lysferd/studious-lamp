@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get 'home' => 'home#index'
   get 'scheduler' => 'home#scheduler'
   post 'scheduler' => 'home#scheduler'
+  post 'approve' => 'schedules#approve'
 
 end

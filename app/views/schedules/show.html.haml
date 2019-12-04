@@ -18,6 +18,8 @@
         = link_to v.name, v
       - else
         = v.name
+      - unless @schedule.visitors.last == v
+        ,
       %br
   %p
     %b Status de Aprovação:
@@ -25,7 +27,7 @@
 
   - if current_user
     - unless @schedule.approved
-      = button_to 'Aprovar Agendamento', ''
+      = button_to 'Aprovar Agendamento', approve_path, remote: true, params: { id: @schedule.id }, data: { disable_with: 'Processando...' }
     = link_to 'Editar', edit_schedule_path(@schedule)
     \|
     = link_to 'Voltar', schedules_path

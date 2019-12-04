@@ -65,6 +65,19 @@ class SchedulesController < ApplicationController
     end
   end
 
+  # POST /schedules/approve/1
+  def approve
+    puts params
+    schedule = Schedule.find params[:id]
+
+    respond_to do |format|
+      if schedule.update( approved: true )
+        SchedulingMailer.with(schedule: @schedule).approval_email.deliver_now
+        format.html { redirect_to schedule }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
