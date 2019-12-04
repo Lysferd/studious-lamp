@@ -9,7 +9,7 @@ class SchedulingMailer < ApplicationMailer
   end
 
   def approval_email
-    @schedule = param[:schedule]
+    @schedule = params[:schedule]
     @email = @schedule.host.email
     mail to: @email, subject: 'Agendamento de Visita Aprovado'
   end
