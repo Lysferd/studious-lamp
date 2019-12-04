@@ -3,7 +3,14 @@ class SchedulingMailer < ApplicationMailer
 
   def schedule_email
     @schedule = params[:schedule]
-    @email = 'phabio_almeida@hotmail.com' # change to "security staff email"
+    user = User.first
+    @email = user.email # change to "security staff email"
     mail to: @email, subject: 'Agendamento de Visitas Genetec'
+  end
+
+  def approval_email
+    @schedule = param[:schedule]
+    @email = @schedule.host.email
+    mail to: @email, subject: 'Agendamento de Visita Aprovado'
   end
 end
