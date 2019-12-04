@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_191739) do
 
   create_table "schedules", force: :cascade do |t|
     t.datetime "datetime"
-    t.boolean "approved"
+    t.boolean "approved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
