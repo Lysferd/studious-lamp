@@ -1,9 +1,10 @@
 %h3 Seu agendamento foi aprovado
 
 %p
-  Olá, 
+  Olá
   = @schedule.host.name
-  , o seu agendamento com
+  ,
+  %br o seu agendamento com
   - @schedule.visitors.each do |v|
     = v.name
     - unless @schedule.visitors.last == v
