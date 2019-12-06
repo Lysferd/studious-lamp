@@ -12,6 +12,10 @@
       = f.datetime_select :datetime
     
     %h3 Anfitrião:
+    = f.select :host, options_from_collection_for_select(@hosts, "id", "name"), include_blank: "Criar novo Anfitrião"
+    = link_to 'add_host', remote: true
+
+
     = f.fields_for :host do |h|
       .field
         = h.label :name, "Nome"
@@ -36,3 +40,8 @@
         = v.text_field :email
     .actions
       = f.submit 'Salvar'
+
+
+= submit_tag "Add Host", type: "button", id: "addHost", onclick: 'addHostField()'
+
+%ul{id: "myList"}
