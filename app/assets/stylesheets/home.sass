@@ -7,13 +7,17 @@
     display: inline-block
     margin-bottom: 10px
 
-.visitorContainer
-  margin: auto
-  width: auto
-  text-align: center
-  border: 1px dotted black
-  margin-top: 5px
+.visitorTopBorder
+  border-top: 1px solid gray
 
+.visitorContainer
+  @extend .visitorTopBorder
+  margin: auto
+  text-align: center
+  margin-top: 5px
+  display: block
+  border-color: lightgrey
+  
 .list
   margin: auto
   width: auto
