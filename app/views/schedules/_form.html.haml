@@ -12,27 +12,38 @@
       = f.datetime_select :datetime
     
     %h3 Anfitrião:
+    //= f.select :host, options_from_collection_for_select(@hosts, "id", "name"), include_blank: "Criar novo Anfitrião"
+    //= link_to 'add_host', remote: true
+
+
     = f.fields_for :host do |h|
       .field
         = h.label :name, "Nome"
-        = h.text_field :name
+        = h.text_field :name, required: true
       .field
         = h.label :credential, "Credencial"
-        = h.text_field :credential
+        = h.text_field :credential, required: true
       .field
         = h.label :email
-        = h.text_field :email
+        = h.text_field :email,  required: true
 
     %h3 Visitantes:
     = f.fields_for :visitors do |v|
       .field
         = v.label :name, "Nome"
-        = v.text_field :name
+        = v.text_field :name, required: true
       .field
         = v.label :credential, "Credencial"
-        = v.text_field :credential
+        = v.text_field :credential, required: true
       .field
         = v.label :email
-        = v.text_field :email
+        = v.text_field :email, required: true
+    .list{id: :my_list}
+    = submit_tag "Inserir Visitante", type: "button", id: "addHost", onclick: 'addVisitorField()'
+    = submit_tag "Remover Último Visitante", type: "button", id: "removeHost", onclick: 'removeVisitorField()'
+    %hr
     .actions
       = f.submit 'Salvar'
+
+
+

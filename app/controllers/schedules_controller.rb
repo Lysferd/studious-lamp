@@ -18,6 +18,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new
     @schedule.host = Host.new
     @schedule.visitors.build
+    @hosts = Host.all
   end
 
   # GET /schedules/1/edit
@@ -76,6 +77,10 @@ class SchedulesController < ApplicationController
         format.html { redirect_to schedule }
       end
     end
+  end
+
+  def add_host
+    alert 'add_host called'
   end
 
   private
