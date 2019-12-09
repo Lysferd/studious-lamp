@@ -97,5 +97,6 @@ window.removeVisitorField = function () {
   console.log('removeVisitorField() called')
   var doc = document.getElementById("my_list");
   console.log(doc.lastChild);
+  
   doc.removeChild(doc.lastChild);
 }
