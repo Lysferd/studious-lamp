@@ -5,10 +5,10 @@ window.addHostField = function () {
   var date = new Date();
   var mSec = date.getTime();
 
-  idAttributKind =
-    "host_attributes_0_kind".replace("0", mSec);
+  idAttributName =
+    "schedule_host_attributes_0_name".replace("0", mSec);
   nameAtributKind =
-    "host[attributes][0][kind]".replace("0", mSec);
+    "schedule[host_attributes][0][name]".replace("0", mSec);
 
   var li = document.createElement("li");
   inputKind.setAttribute("type", "text");
