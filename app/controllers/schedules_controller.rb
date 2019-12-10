@@ -79,8 +79,8 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def add_host
-    alert 'add_host called'
+  def add_visitor
+    puts 'Here'
   end
 
   private

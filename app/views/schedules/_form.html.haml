@@ -28,7 +28,10 @@
         = h.text_field :email,  required: true
 
     .visitorTopBorder
-    %h3 Visitantes:
+    %h3
+      Visitantes:
+      = button_tag ?X, type: :button, id: :add_visitor
+
     = f.fields_for :visitors do |v|
       .field
         = v.label :name, "Nome"
@@ -47,4 +50,9 @@
       = f.submit 'Salvar'
 
 
-
+:coffee
+  $ ->
+    $("button#add_visitor").click (e) ->
+      e.preventDefault()
+      $.ajax(url: "/add_visitor").done (html) ->
+        alert 123

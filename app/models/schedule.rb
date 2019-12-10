@@ -1,14 +1,17 @@
 class Schedule < ApplicationRecord
-  before_save :set_timezone
 
-  has_one :host
+  belongs_to :host
   has_many :visitors
 
   accepts_nested_attributes_for :host, allow_destroy: true
   accepts_nested_attributes_for :visitors, allow_destroy: true
 
-  private
-    def set_timezone
+  def host_attributes= attributes
+    if attributes[:id].present?
+      self.host = Host.find attributes[:id]
     end
+
+    super
+  end
 
 end

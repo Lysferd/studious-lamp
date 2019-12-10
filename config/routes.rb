@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   post 'scheduler' => 'home#scheduler'
   post 'approve' => 'schedules#approve'
 
-  get 'add_host' => 'schedules#add_host'
+  get 'add_visitor' => 'schedules#add_visitor'
 
 end

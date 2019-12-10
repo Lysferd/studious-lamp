@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 2019_11_25_191739) do
     t.string "name"
     t.string "credential"
     t.string "email"
-    t.integer "schedule_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["schedule_id"], name: "index_hosts_on_schedule_id"
   end
 
   create_table "schedules", force: :cascade do |t|
     t.datetime "datetime"
     t.boolean "approved", default: false
+    t.integer "host_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["host_id"], name: "index_schedules_on_host_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +51,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_191739) do
     t.index ["schedule_id"], name: "index_visitors_on_schedule_id"
   end
 
-  add_foreign_key "hosts", "schedules"
+  add_foreign_key "schedules", "hosts"
   add_foreign_key "visitors", "schedules"
 end
