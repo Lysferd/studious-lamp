@@ -1,0 +1,7 @@
+console.log("Visitor AJAX Loaded!")
+$( "#form-visitor-pile" ).append( "<%= j render 'form_visitor', index: @msec %>" )
+$( "#form-visitor-pile :last-child" ).slideDown()
+
+$( "button#remove_visitor_coffee" ).click(function() {
+  $(this).parent().parent().slideUp(function() { $(this).remove() })
+})

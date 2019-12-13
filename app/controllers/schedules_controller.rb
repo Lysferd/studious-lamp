@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
+  skip_before_action :authenticate_user!, only: [ :new, :create, :show, :add_visitor ]
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   # GET /schedules
@@ -80,7 +80,9 @@ class SchedulesController < ApplicationController
   end
 
   def add_visitor
-    puts 'Here'
+    puts 'Inside #add_visitor from AJAX call'
+
+    @msec = Time::now.nsec
   end
 
   private

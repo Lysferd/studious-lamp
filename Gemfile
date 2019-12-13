@@ -24,14 +24,12 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
 gem "jquery-rails"
-gem 'popper_js', '~> 1.12.9'
 
-gem 'coffee-script'
+#gem 'coffee-script'
+gem 'coffee-rails'
 
-gem 'haml'
+#gem 'haml'
 gem 'haml-rails'
 
 # Use Active Storage variant

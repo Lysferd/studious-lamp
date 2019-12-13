@@ -1,3 +1,4 @@
+
 .container
   = form_for @schedule do |f|
     - if @schedule.errors.any?
@@ -12,10 +13,6 @@
       = f.datetime_select :datetime
     
     %h3 Anfitrião:
-    //= f.select :host, options_from_collection_for_select(@hosts, "id", "name"), include_blank: "Criar novo Anfitrião"
-    //= link_to 'add_host', remote: true
-
-
     = f.fields_for :host do |h|
       .field
         = h.label :name, "Nome"
@@ -27,32 +24,13 @@
         = h.label :email
         = h.text_field :email,  required: true
 
-    .visitorTopBorder
-    %h3
-      Visitantes:
-      = button_tag ?X, type: :button, id: :add_visitor
+    %h3 Visitantes:
 
-    = f.fields_for :visitors do |v|
-      .field
-        = v.label :name, "Nome"
-        = v.text_field :name, required: true
-      .field
-        = v.label :credential, "Credencial"
-        = v.text_field :credential, required: true
-      .field
-        = v.label :email
-        = v.text_field :email, required: true
-    .list{id: :my_list}
-    = submit_tag "Inserir Visitante", type: "button", id: "addHost", onclick: 'addVisitorField()'
-    = submit_tag "Remover Último Visitante", type: "button", id: "removeHost", onclick: 'removeVisitorField()'
-    %hr
+    #form-visitor-pile
+      = f.fields_for :visitors do |v|
+        = render 'form_visitor'
+    = link_to 'Incluir Visitante', add_visitor_path, id: :add_visitor_ajax, remote: true
+
     .actions
       = f.submit 'Salvar'
 
-
-:coffee
-  $ ->
-    $("button#add_visitor").click (e) ->
-      e.preventDefault()
-      $.ajax(url: "/add_visitor").done (html) ->
-        alert 123

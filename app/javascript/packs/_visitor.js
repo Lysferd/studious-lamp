@@ -1,5 +1,5 @@
 require("jquery")
-console.log('visitor.js loaded')
+//console.log('visitor.js loaded')
 
 window.addVisitorField = function () {
   console.log('addVisitorField() called')

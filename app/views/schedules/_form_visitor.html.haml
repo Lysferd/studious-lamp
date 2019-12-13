@@ -1,0 +1,24 @@
+- index ||= 0
+
+.form-visitor( style="#{ index.zero? ? "" : "display: none;"}"  )
+  - unless index.zero?
+    %hr
+
+  - unless index.zero?
+    .float( style="float: right; margin-right: 8px")
+      = button_tag 'Remover', type: :button, id: :remove_visitor_coffee
+
+  .field
+    %label( for="schedule_visitors_attributes_#{index}_name" )
+      Nome
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][name]" id="schedule_visitors_attributes_#{index}_name" )
+
+  .field
+    %label( for="schedule_visitors_attributes_#{index}_credential" )
+      Credencial
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][credential]" id="schedule_visitors_attributes_#{index}_credential" )
+
+  .field
+    %label( for="schedule_visitors_attributes_#{index}_email" )
+      Email
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][email]" id="schedule_visitors_attributes_#{index}_email" )
