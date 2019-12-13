@@ -9,13 +9,22 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'visitor'
   %body
+    #title= content_for?( :title ) ? yield( :title ) : 'Studious Lamp'
+    - if current_user
+      #hmenu
+        %nav
+          %ul
+            %li= remote_link 'Anfitriões', hosts_path
+            %li= remote_link 'Visitantes', visitors_path
+            %li= remote_link 'Agendamentos', schedules_path
+            %li= link_to 'Sair', destroy_user_session_path, method: :delete
     .container
-      - if current_user
-        = link_to 'Anfitriões', hosts_path
-        = link_to 'Visitantes', visitors_path
-        = link_to 'Agendamentos', schedules_path
-        = link_to 'Sair', destroy_user_session_path, method: :delete
-      %p#notice= notice
-      %p#alert= alert
+      //- if current_user
+      //  = link_to 'Anfitriões', hosts_path
+      //  = link_to 'Visitantes', visitors_path
+      //  = link_to 'Agendamentos', schedules_path
+      //  = link_to 'Sair', destroy_user_session_path, method: :delete
+      //%p#notice= notice
+      //%p#alert= alert
       = yield
 
