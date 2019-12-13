@@ -1,5 +1,21 @@
 ---
 pt-BR:
+
+  show_header: Detalhes de
+  new_header: Cadastrando
+  edit_header: Editando
+
+  headers:
+    index: Listando
+    show: Detalhes de
+    new: Cadastrando
+    edit: Editando
+
+  models:
+    schedules:
+      one: Agendamento
+      other: Agendamentos
+
   activerecord:
     errors:
       messages:

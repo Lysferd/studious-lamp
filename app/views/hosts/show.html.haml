@@ -8,6 +8,7 @@
     %b Credencial:
     = @host.credential
   %p
+    - @host.schedules.each do |s|
     = link_to 'Agendamento', @host.schedule
 
   = link_to 'Editar', edit_host_path(@host)

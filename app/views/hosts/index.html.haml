@@ -13,7 +13,9 @@
       %tr
         %td= host.name
         %td= host.credential
-        %td= link_to host.schedule.datetime, host.schedule
+        %td
+          - host.schedules.each do |s|
+            = link_to s.datetime, s
         %td
           = link_to 'Detalhar', host
           = link_to 'Editar', edit_host_path(host)

@@ -1,28 +1,34 @@
-%h1 Listando agendamentos
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
+#paper{ style: table_width(5) }
+  %table
+    - unless @schedules.count.zero?
+      %thead
+        %tr
+          %th Data e Hora
+          %th Anfitrião
+          %th Visitante(s)
+          %th Aprovado
+          %th Opções
 
-%table(border)
-  %thead
-    %tr
-      %th Data e Hora
-      %th Anfitrião
-      %th Visitante(s)
-      %th Aprovado
-      %th Opções
-
-  %tbody
-    - @schedules.each do |schedule|
+      %tbody.data
+        - @schedules.each do |schedule|
+          %tr
+            %td= schedule.datetime
+            %td= link_to schedule.host.name, schedule.host
+            %td
+              - schedule.visitors.each do |v|
+                = link_to v.name, v
+            %td= schedule.approved ? 'Sim' : 'Não'
+            %td
+              = image_show schedule
+              = image_edit schedule
+              = image_delete schedule
+    - else
       %tr
-        %td= schedule.datetime
-        %td= link_to schedule.host.name, schedule.host
         %td
-          - schedule.visitors.each do |v|
-            = link_to v.name, v
-        %td= schedule.approved ? 'Sim' : 'Não'
-        %td
-          = link_to 'Detalhes', schedule
-          = link_to 'Editar', edit_schedule_path(schedule)
-          = link_to 'Apagar', schedule, method: :delete, data: { confirm: 'Tem certeza disso?' }
-
-%br
-
-= link_to 'Novo Agendamento', new_schedule_path
+          %h3= t "Sem Agendamentos"
+    %tbody.commands
+      %tr
+        %td{ colspan: 6}
+          = button_to 'Novo Agendamento', new_schedule_path, method: :get
