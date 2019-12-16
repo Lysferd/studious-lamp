@@ -1,33 +1,39 @@
-.container-show
-  //%p#notice= notice
-
-  %h3 Detalhes da visita:
-  %p
-    %b Data e hora:
-    = @schedule.datetime
-  %p
-    %b Anfitrião:
-    - if current_user
-      = link_to @schedule.host.name, @schedule.host
-    - else
-      = @schedule.host.name
-  %p
-    %b Visitante(s):
-    - @schedule.visitors.each do |v|
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
+//.container-show
+//  %p#notice= notice
+#paper
+  .float( style="float: left; margin: 5px")
+    = image_back schedules_path
+  .float( style="float: right; margin: 5px")
+    = image_edit @schedule
+  %table
+    %br/
+    %tbody.data
+      %tr
+        %td{ style: 'font-weight: bold;' }= "Data e Hora"
+        %td= @schedule.datetime
+      %tr
+        %td{ style: 'font-weight: bold;' }= "Anfitrião"
+        %td
+          - if current_user
+            = link_to @schedule.host.name, @schedule.host
+          - else
+            = @schedule.host.name
+      %tr
+        %td{ style: 'font-weight: bold;' }= "Visitante(s)"
+        %td
+          - @schedule.visitors.each do |v|
+            - if current_user
+              = link_to v.name, v
+            - else
+              = v.name
+      %tr
+        %td{ style: 'font-weight: bold;' }= "Status de aprovação"
+        %td= @schedule.approved ? 'Aprovado' : 'Pendente'
+    %tbody.commands
       - if current_user
-        = link_to v.name, v
-      - else
-        = v.name
-      - unless @schedule.visitors.last == v
-        ,
-      %br
-  %p
-    %b Status de Aprovação:
-    = @schedule.approved ? 'Aprovado' : 'Pendente'
-
-  - if current_user
-    - unless @schedule.approved
-      = button_to 'Aprovar Agendamento', approve_path, remote: true, params: { id: @schedule.id }, data: { disable_with: 'Processando...' }
-    = link_to 'Editar', edit_schedule_path(@schedule)
-    \|
-    = link_to 'Voltar', schedules_path
+        %tr
+          %td{ colspan: 2}
+            - unless @schedule.approved
+              = button_to 'Aprovar Agendamento', approve_path, remote: true, params: { id: @schedule.id }, data: { disable_with: 'Processando...' }

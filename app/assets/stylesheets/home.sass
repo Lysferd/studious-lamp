@@ -174,6 +174,9 @@ $titlepadding: 20px
     width: auto
 
   #paper
+    a
+      color: #00BFA5 //Verde Petróleo 400 - Google Material Design Pallete
+      background-color: transparent
     margin-left: auto
     margin-right: auto
     margin-bottom: 30px
@@ -185,7 +188,7 @@ $titlepadding: 20px
       color: white
       letter-spacing: 2px
       background-color: #4DB6AC //Verde Petróleo 500 - Google Material Design Pallete
-      width: 180px
+      width: auto //180px
       height: 30px
       border: 0
 
@@ -233,6 +236,9 @@ $titlepadding: 20px
       // BEGIN OF TABLE COMMANDS //
       .commands tr
         height: 60px
+        a
+          color: #00BFA5 //Verde Petróleo 400 - Google Material Design Pallete
+          background-color: transparent
         form
           width: inherit
           border: none
@@ -272,9 +278,6 @@ form
     padding: 10px
     width: auto
     margin: auto
-
-button
-  float: right
 
 table
   width: 100%
@@ -337,17 +340,17 @@ table
     #commands
       text-align: center
 
-      input[type="submit"]
-        margin-top: 10px
-        color: white
-        letter-spacing: 2px
-        background-color: #4DB6AC //Verde Petróleo 500 - Google Material Design Pallete
-        width: auto//130px
-        height: 30px
-        border: 0
+    input[type="submit"], button
+      margin-top: 10px
+      color: white
+      letter-spacing: 1px
+      background-color: #4DB6AC //Verde Petróleo 500 - Google Material Design Pallete
+      width: auto//130px
+      height: 30px
+      border: 0
 
-        &:hover
-          background-color:#26A69A //Verde Petróleo 400 - Google Material Design Pallete
+      &:hover
+        background-color:#26A69A //Verde Petróleo 400 - Google Material Design Pallete
     // SPECIAL BUTTON FOR LOGIN PAGE //
     #login
       color: white
