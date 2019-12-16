@@ -2,16 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// Variables //
+$titleheight: 28px
+$titlepadding: 20px
 // Mixins //
 @mixin title-banner
   color: white
   top: 0px
   left: 0px
-  padding-top: 20px
-  padding-bottom: 20px
+  padding-top: $titlepadding
+  padding-bottom: $titlepadding
   position: fixed
   width: 100%
-  height: 28px
+  height: $titleheight
   box-shadow: 0px 0px 15px #888888
   text-align: center
   font-variant: small-caps
@@ -51,8 +54,8 @@
   font-size: 11px
   z-index: 9
   color: #00695C
-  top: 68px
-  border-top: 20px
+  top: $titleheight + 2*($titlepadding) //68px
+  border-top: $titlepadding //20px
   left: 0px
   position: fixed
   width: 100%
@@ -283,6 +286,112 @@ table
     input
       width: 90%
 
+// BEGIN OF FORMY //
+#formy
+  padding-top: 20px
+  padding-bottom: 10px
+  position: relative
+  // top: 150px
+  margin-left: auto
+  margin-right: auto
+  background-color: #FFFFFF //Branco 0 - Google Material Design Pallete
+  box-shadow: 0px 0px 5px #888888
+  width: 500px
+  text-align: center
+  h3
+    text-align: left
+    padding-left: 40px
+
+  .form-visitor
+    hr
+      width: 70%
+      border-top: 1px dotted gray
+      border-bottom: none
+  form
+    margin-left: auto
+    margin-right: auto
+    min-width: 350px
+    width: 500px
+    border: 0
+    text-align: center
+    padding: 0
+    .field
+      width: 330px
+      overflow: auto
+      
+
+    .inputcheck
+      margin-left: auto
+      margin-right: auto
+      width: 450px
+      font-size: 15px
+
+      input[type="checkbox"]
+        + label span
+          margin-left: 20px
+          bottom: 5px
+          cursor: pointer
+          vertical-align: middle
+          position: relative
+          cursor: pointer
+    #commands
+      text-align: center
+
+      input[type="submit"]
+        margin-top: 10px
+        color: white
+        letter-spacing: 2px
+        background-color: #4DB6AC //Verde Petróleo 500 - Google Material Design Pallete
+        width: auto//130px
+        height: 30px
+        border: 0
+
+        &:hover
+          background-color:#26A69A //Verde Petróleo 400 - Google Material Design Pallete
+    // SPECIAL BUTTON FOR LOGIN PAGE //
+    #login
+      color: white
+      letter-spacing: 2px
+      background-color: #009688 //Verde Petróleo 500 - Google Material Design Pallete
+      width: 274px
+      height: 43px
+      border: 0
+      border-radius: 3px
+      &:hover
+        background-color:#26A69A //Teal 400 - Google Material Design Pallete
+
+    input
+      margin-bottom: 10px
+      &[type="email"], &[type="password"], &[type="text"]
+        background-color: #FFFFFF
+        padding-left: 10px
+        width: 261px
+        height: 43px
+        border: 1px solid #BDBDBD
+        letter-spacing: 2px
+        &:focus
+          background-color: #FAFAFA //Cinza 50 - Google Material Design Pallete
+
+    //textarea
+      width: 252px
+      height: 150px
+      border: 1px solid #BDBDBD //Cinza 400 - Google Material Design Pallete
+      resize: none
+      padding: 5px 10px 5px 10px
+      &:focus
+        background-color: #FAFAFA //Cinza 50 - Google Material Design Pallete
+
+    //select
+      background-color: #FFFFFF
+      width: auto
+      height: auto
+      border: 1px solid #BDBDBD
+      letter-spacing: 2px
+      margin-top: 6px
+      margin-bottom: 10px
+      &:focus
+        background-color: #FAFAFA //Cinza 50 - Google Material Design Pallete
+// END OF FORMY //
 
 // BEGIN OF NAVIGATION MENU //
 nav

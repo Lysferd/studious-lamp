@@ -9,16 +9,16 @@
       = button_tag 'Remover', type: :button, id: :remove_visitor_coffee
 
   .field
-    %label( for="schedule_visitors_attributes_#{index}_name" )
-      Nome
-    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][name]" id="schedule_visitors_attributes_#{index}_name" )
+    //%label( for="schedule_visitors_attributes_#{index}_name" )
+    //  Nome
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][name]" id="schedule_visitors_attributes_#{index}_name" placeholder="Nome" )
 
   .field
-    %label( for="schedule_visitors_attributes_#{index}_credential" )
-      Credencial
-    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][credential]" id="schedule_visitors_attributes_#{index}_credential" )
+    //%label( for="schedule_visitors_attributes_#{index}_credential" )
+    //  Credencial
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][credential]" id="schedule_visitors_attributes_#{index}_credential" placeholder="Credencial")
 
   .field
-    %label( for="schedule_visitors_attributes_#{index}_email" )
-      Email
-    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][email]" id="schedule_visitors_attributes_#{index}_email" )
+    //%label( for="schedule_visitors_attributes_#{index}_email" )
+    //  Email
+    %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][email]" id="schedule_visitors_attributes_#{index}_email" placeholder="Email")
