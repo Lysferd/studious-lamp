@@ -25,6 +25,14 @@ module ApplicationHelper
   end
   alias :image_get :link_image
 
+  def image_back( object, controller = controller_name, html_options = { } )
+    #return unless can?( :read, object )
+    path = "/#{controller}/"
+    src = 'arrow-left-circle.svg'
+    alt = :back
+    return link_image( src, alt, path, html_options )
+  end
+
   def image_show( object, controller = controller_name, html_options = { } )
     #return unless can?( :read, object )
     path = "/#{controller}/#{object.id}"
