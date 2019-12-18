@@ -1,16 +1,26 @@
-= form_for @host do |f|
-  - if @host.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@host.errors.count, "error")} prohibited this host from being saved:"
-      %ul
-        - @host.errors.full_messages.each do |message|
-          %li= message
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
 
-  .field
-    = f.label :name, "Nome"
-    = f.text_field :name
-  .field
-    = f.label :credential, "Credencial"
-    = f.text_field :credential
-  .actions
-    = f.submit 'Salvar'
+#formy
+  .float( style="float: left; margin: 5px" )
+    - if current_user
+      = image_back @host
+    - else
+      = root_back
+
+  = form_for @host do |f|
+    - if @host.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@host.errors.count, "error")} prohibited this host from being saved:"
+        %ul
+          - @host.errors.full_messages.each do |message|
+            %li= message
+
+    .field
+      %h3= f.label :name, (t "shows.name")
+      = f.text_field :name
+    .field
+      %h3= f.label :credential, (t "shows.credential")
+      = f.text_field :credential
+    .actions
+      = f.submit 'Salvar'

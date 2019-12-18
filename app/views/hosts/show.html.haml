@@ -1,14 +1,28 @@
-.container-show
-  %p
-    %b Nome:
-    = @host.name
-  %p
-    %b Credencial:
-    = @host.credential
-  %p
-    - @host.schedules.each do |s|
-      = link_to 'Agendamento', s
-
-  = link_to 'Editar', edit_host_path(@host)
-  \|
-  = link_to 'Voltar', hosts_path
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
+#paper
+  .float( style="float: left; margin: 5px")
+    = image_back @host
+  .float( style="float: right; margin: 5px")
+    - if current_user
+      = image_edit @host
+  %table
+    %tbody.data
+      %tr
+        %td.bold= t "shows.name"
+        %td= @host.name
+      %tr
+        %td.bold= t "shows.credential"
+        %td= @host.credential
+      %tr
+        %td{ style: 'font-weight: bold;' }= t "shows.schedules"
+        %td
+          - @host.schedules.each do |s|
+            - str = I18n.l s.datetime, format: :long
+            - if current_user
+              = link_to str, s
+            - else
+              = str
+    %tbody.commands
+      %tr
+        %td{ colspan: 4 }

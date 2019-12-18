@@ -1,26 +1,32 @@
-%h1 Lista de Anfitriões
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
 
-%table(border)
-  %thead
-    %tr
-      %th Nome
-      %th Credencial
-      %th Agendamentos
-      %th Opções
+#paper{ style: table_width(4) }
+  %table
+    - unless @hosts.count.zero?
+      %thead
+        %tr
+          %th Nome
+          %th Credencial
+          %th Agendamentos
+          %th Opções
 
-  %tbody
-    - @hosts.each do |host|
+      %tbody.data
+        - @hosts.each do |host|
+          %tr
+            %td= host.name
+            %td= host.credential
+            %td
+              - host.schedules.each do |s|
+                = link_to s.datetime, s
+            %td
+              = image_show host
+              = image_edit host
+              = image_delete host
+    - else
       %tr
-        %td= host.name
-        %td= host.credential
         %td
-          - host.schedules.each do |s|
-            = link_to s.datetime, s
-        %td
-          = link_to 'Detalhar', host
-          = link_to 'Editar', edit_host_path(host)
-          = link_to 'Apagar', host, method: :delete, data: { confirm: 'Você tem certeza?' }
-
-%br
-
-= link_to 'Novo Anfitrião', new_host_path
+          %h3= t "Sem Anfitriões"
+    %tbody.commands
+      %tr
+        %td{ colspan: 5}

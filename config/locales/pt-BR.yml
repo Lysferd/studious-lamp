@@ -4,7 +4,14 @@ pt-BR:
   show_header: Detalhes de
   new_header: Cadastrando
   edit_header: Editando
+  destroy_confirmation: "Os dados serão destruido permanentemente.\nDeseja prosseguir?"
 
+  shows:
+    name: Nome
+    credential: Credencial
+    schedule: Agendamento
+    schedules: Agendamento(s)
+    options: Opções
   headers:
     index: Listando
     show: Detalhes de
@@ -15,6 +22,9 @@ pt-BR:
     schedules:
       one: Agendamento
       other: Agendamentos
+    hosts:
+      one: Anfitrião
+      other: Anfitriões
 
   activerecord:
     errors:

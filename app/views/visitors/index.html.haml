@@ -1,23 +1,27 @@
-%h1 Lista de visitantes
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
 
-%table(border)
-  %thead
-    %tr
-      %th Nome
-      %th Credencial
-      %th Agendamentos
-      %th Opções
+#paper{ style:table_width(4) }
+  %table
+    - unless @visitors.count.zero?
+      %thead
+        %tr
+          %th= t "shows.name"
+          %th= t "shows.credential"
+          %th= t "shows.schedules"
+          %th= t "shows.options"
 
-  %tbody
-    - @visitors.each do |visitor|
-      %tr
-        %td= visitor.name
-        %td= visitor.credential
-        %td= link_to visitor.schedule.datetime, visitor.schedule
-        %td
-          = link_to 'Detalhes', visitor
-          = link_to 'Editar', edit_visitor_path(visitor)
-          = link_to 'Apagar', visitor, method: :delete, data: { confirm: 'Você tem certeza?' }
+      %tbody.data
+        - @visitors.each do |v|
+          - str = I18n.l v.schedule.datetime, format: :long
+          %tr
+            %td= v.name
+            %td= v.credential
+            %td= link_to str, v.schedule
+            %td
+              = link_to 'Detalhes', v
+              = link_to 'Editar', edit_visitor_path(v)
+              = link_to 'Apagar', v, method: :delete, data: { confirm: 'Você tem certeza?' }
 
 %br
 
