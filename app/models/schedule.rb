@@ -1,7 +1,7 @@
 class Schedule < ApplicationRecord
 
   belongs_to :host
-  has_many :visitors
+  has_many :visitors, dependent: :destroy
 
   accepts_nested_attributes_for :host, allow_destroy: true
   accepts_nested_attributes_for :visitors, allow_destroy: true

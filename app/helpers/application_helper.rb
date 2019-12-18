@@ -33,6 +33,13 @@ module ApplicationHelper
     return link_image( src, alt, path, html_options )
   end
 
+  # Return to Root version `image_back'
+  def root_back
+    src = 'arrow-left-circle.svg'
+    alt = :back
+    return link_image( src, alt, root_path )
+  end
+
   def image_show( object, controller = controller_name, html_options = { } )
     #return unless can?( :read, object )
     path = "/#{controller}/#{object.id}"

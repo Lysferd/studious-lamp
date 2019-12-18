@@ -1,6 +1,13 @@
 - content_for :title do
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
+
 #formy
+  .float( style="float: left; margin: 5px" )
+    - if current_user
+      = image_back @schedule
+    - else
+      = root_back
+
   = form_for @schedule do |f|
     - if @schedule.errors.any?
       #error_explanation

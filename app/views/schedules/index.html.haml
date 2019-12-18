@@ -1,5 +1,6 @@
 - content_for :title do
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
+
 #paper{ style: table_width(5) }
   %table
     - unless @schedules.count.zero?

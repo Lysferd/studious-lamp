@@ -1,6 +1,4 @@
 .container-show
-  //%p#notice= notice
-
   %p
     %b Nome:
     = @host.name
@@ -9,7 +7,7 @@
     = @host.credential
   %p
     - @host.schedules.each do |s|
-    = link_to 'Agendamento', @host.schedule
+      = link_to 'Agendamento', s
 
   = link_to 'Editar', edit_host_path(@host)
   \|

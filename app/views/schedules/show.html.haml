@@ -1,12 +1,12 @@
 - content_for :title do
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
-//.container-show
-//  %p#notice= notice
+
 #paper
   .float( style="float: left; margin: 5px")
-    = image_back schedules_path
+    = image_back @schedule
   .float( style="float: right; margin: 5px")
     = image_edit @schedule
+
   %table
     %br/
     %tbody.data
