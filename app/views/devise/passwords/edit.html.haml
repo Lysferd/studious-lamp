@@ -1,19 +1,19 @@
-%h2 Mudar a minha senha
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "Nova senha"
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-      %br/
-    = f.password_field :password, autofocus: true, autocomplete: "nova senha"
-  .field
-    = f.label :password_confirmation, "Confirmar nova senha"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "nova senha"
-  .actions
-    = f.submit "Mude a minha senha"
-= render "devise/shared/links"
+#formy
+  .floatL
+    = root_back
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    = f.hidden_field :reset_password_token
+    .field
+      //%h3= f.label :password, "Nova senha"
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+        %br/
+      = f.password_field :password, autofocus: true, autocomplete: "nova senha", placeholder: "Nova Senha"
+    .field
+      //%h3= f.label :password_confirmation, "Confirmar nova senha"
+      = f.password_field :password_confirmation, autocomplete: "nova senha", placeholder: "Confirmar Nova Senha"
+    .actions
+      = f.submit "Mude a minha senha"
+  = render "devise/shared/links"

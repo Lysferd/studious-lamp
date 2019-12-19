@@ -1,15 +1,27 @@
-.container-show
-  //%p#notice= notice
-
-  %p
-    %b Nome:
-    = @visitor.name
-  %p
-    %b Credencial:
-    = @visitor.credential
-  %p
-    = link_to 'Agendamento', @visitor.schedule
-
-  = link_to 'Editar', edit_visitor_path(@visitor)
-  \|
-  = link_to 'Voltar', visitors_path
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
+#paper
+  .floatL
+    = image_back @visitor
+  .floatR
+    - if current_user
+      = image_edit @visitor
+  %table
+    %tbody.data
+      %tr
+        %td.bold= t "shows.name"
+        %td= @visitor.name
+      %tr
+        %td.bold= t "shows.credential"
+        %td= @visitor.credential
+      %tr
+        %td.bold= t "shows.schedules"
+        %td
+          - str = I18n.l @visitor.schedule.datetime, format: :long
+          - if current_user
+            = link_to str, @visitor.schedule
+          - else
+            = str
+    %tbody.commands
+      %tr
+        %td{ colspan: 4 }

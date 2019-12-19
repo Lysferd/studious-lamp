@@ -2,35 +2,38 @@
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
 
 #paper
-  .float( style="float: left; margin: 5px")
+  .floatL
     = image_back @schedule
-  .float( style="float: right; margin: 5px")
+  .floatR
     = image_edit @schedule
 
   %table
-    %br/
     %tbody.data
       %tr
-        %td{ style: 'font-weight: bold;' }= "Data e Hora"
-        %td= @schedule.datetime
-      %tr
-        %td{ style: 'font-weight: bold;' }= "Anfitrião"
+        %td.bold= t "shows.datetime"
         %td
-          - if current_user
-            = link_to @schedule.host.name, @schedule.host
-          - else
-            = @schedule.host.name
+          - str = I18n.l @schedule.datetime, format: :long
+          = str
       %tr
-        %td{ style: 'font-weight: bold;' }= "Visitante(s)"
+        %td.bold= t "models.hosts", count: 1
+        %td
+          - str = @schedule.host.name + ' (ID:' + @schedule.host.credential + ')'
+          = str
+          %br
+          = @schedule.host.email
+      %tr
+        %td.bold= t "models.visitors", count: 0
         %td
           - @schedule.visitors.each do |v|
-            - if current_user
-              = link_to v.name, v
-            - else
-              = v.name
+            - str = (v.name) + (' (ID:') + (v.credential) + (')')
+            = str
+            %br
+            = v.email
+            - if v != @schedule.visitors.last
+              %hr
       %tr
-        %td{ style: 'font-weight: bold;' }= "Status de aprovação"
-        %td= @schedule.approved ? 'Aprovado' : 'Pendente'
+        %td.bold= t "shows.status"
+        %td= @schedule.approved ? (t "shows.approved") : (t "shows.pending")
     %tbody.commands
       - if current_user
         %tr

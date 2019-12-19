@@ -8,7 +8,7 @@
         %tr
           %th= t "shows.name"
           %th= t "shows.credential"
-          %th= t "shows.schedules"
+          %th= t "models.schedules", count: 0
           %th= t "shows.options"
 
       %tbody.data
@@ -19,10 +19,14 @@
             %td= v.credential
             %td= link_to str, v.schedule
             %td
-              = link_to 'Detalhes', v
-              = link_to 'Editar', edit_visitor_path(v)
-              = link_to 'Apagar', v, method: :delete, data: { confirm: 'Você tem certeza?' }
-
-%br
-
-= link_to 'Novo visitante', new_visitor_path
+              = image_show v
+              = image_edit v
+              = image_delete v
+    - else
+      %tr
+        %td
+          - str = (t "shows.none") + ' ' + (t "models.#{controller_name}", count: 2)
+          %h3= str
+    %tbody.commands
+      %tr
+        %td{ colspan: 5 }

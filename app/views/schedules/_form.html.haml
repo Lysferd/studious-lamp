@@ -2,7 +2,7 @@
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
 
 #formy
-  .float( style="float: left; margin: 5px" )
+  .floatL
     - if current_user
       = image_back @schedule
     - else
@@ -17,21 +17,18 @@
             %li= message
 
     .field
-      %h3= f.label :datetime, "Data e hora:"
-      = f.datetime_select :datetime, start_year: Date.today.year, minute_step: 10, prompt: true
-    %h3 Anfitrião:
+      %h3= f.label :datetime, (t "shows.datetime")
+      = f.datetime_select :datetime, start_year: Date.today.year, minute_step: 10, required: true
+    %h3= t "models.hosts", count: 1
     = f.fields_for :host do |h|
       .field
-        //= h.label :name, "Nome"
         = h.text_field :name, required: true, placeholder: "Nome"
       .field
-        //= h.label :credential, "Credencial"
         = h.text_field :credential, required: true, placeholder: "Credencial"
       .field
-        //= h.label :email
         = h.text_field :email,  required: true, placeholder: "Email"
 
-    %h3 Visitantes:
+    %h3= t "models.visitors", count: 0
 
     #form-visitor-pile
       = f.fields_for :visitors do |v|

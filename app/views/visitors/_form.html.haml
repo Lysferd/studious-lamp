@@ -1,19 +1,30 @@
-= form_for @visitor do |f|
-  - if @visitor.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@visitor.errors.count, "error")} prohibited this visitor from being saved:"
-      %ul
-        - @visitor.errors.full_messages.each do |message|
-          %li= message
+- content_for :title do
+  - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 2)
 
-  .field
-    = f.label :name, "Nome"
-    = f.text_field :name
-  .field
-    = f.label :credential, "Credencial"
-    = f.text_field :credential
-  .field
-    = f.label :schedule, "Agendamento"
-    = f.text_field :schedule
-  .actions
-    = f.submit 'Salvar'
+#formy
+  .floatL
+    - if current_user
+      = image_back @visitor
+    - else
+      = root_back
+ 
+  = form_for @visitor do |f|
+    - if @visitor.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@visitor.errors.count, "error")} prohibited this visitor from being saved:"
+        %ul
+          - @visitor.errors.full_messages.each do |message|
+            %li= message
+
+    .field
+      %h3= f.label :name, (t "shows.name")
+      = f.text_field :name
+    .field
+      %h3= f.label :credential, (t "shows.credential")
+      = f.text_field :credential
+    .field
+      - if action_name != "edit"
+        %h3= f.label :schedule, (t "shows.schedule")
+        = f.text_field :schedule
+    .actions
+      = f.submit 'Salvar'

@@ -1,9 +1,9 @@
 - content_for :title do
   - (t "headers.#{action_name}") + ' ' + (t "models.#{controller_name}", count: 1)
 #paper
-  .float( style="float: left; margin: 5px")
+  .floatL
     = image_back @host
-  .float( style="float: right; margin: 5px")
+  .floatR
     - if current_user
       = image_edit @host
   %table
@@ -15,7 +15,7 @@
         %td.bold= t "shows.credential"
         %td= @host.credential
       %tr
-        %td{ style: 'font-weight: bold;' }= t "shows.schedules"
+        %td.bold= t "shows.schedules"
         %td
           - @host.schedules.each do |s|
             - str = I18n.l s.datetime, format: :long

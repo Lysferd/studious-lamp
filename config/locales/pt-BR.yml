@@ -12,6 +12,11 @@ pt-BR:
     schedule: Agendamento
     schedules: Agendamento(s)
     options: Opções
+    datetime: Data e Hora
+    none: Sem
+    approved: Aprovado
+    pending: Pendente
+    status: Status de Aprovação
   headers:
     index: Listando
     show: Detalhes de
@@ -20,11 +25,16 @@ pt-BR:
 
   models:
     schedules:
+      zero: Agendamento(s)
       one: Agendamento
       other: Agendamentos
     hosts:
       one: Anfitrião
       other: Anfitriões
+    visitors:
+      zero: Visitante(s)
+      one: Visitante
+      other: Visitantes
 
   activerecord:
     errors:

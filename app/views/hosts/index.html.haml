@@ -6,10 +6,10 @@
     - unless @hosts.count.zero?
       %thead
         %tr
-          %th Nome
-          %th Credencial
-          %th Agendamentos
-          %th Opções
+          %th= t "shows.name"
+          %th= t "shows.credential"
+          %th= t "models.schedules", count: 0
+          %th= t "shows.options"
 
       %tbody.data
         - @hosts.each do |host|
@@ -18,7 +18,11 @@
             %td= host.credential
             %td
               - host.schedules.each do |s|
-                = link_to s.datetime, s
+                - str = I18n.l s.datetime, format: :long
+                - if current_user
+                  = link_to str, s
+                - else
+                  = str
             %td
               = image_show host
               = image_edit host
@@ -26,7 +30,8 @@
     - else
       %tr
         %td
-          %h3= t "Sem Anfitriões"
+          - str = (t "shows.none") + ' ' + (t "models.#{controller_name}", count: 2)
+          %h3= str
     %tbody.commands
       %tr
         %td{ colspan: 5}

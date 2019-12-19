@@ -6,16 +6,19 @@
     - unless @schedules.count.zero?
       %thead
         %tr
-          %th Data e Hora
-          %th Anfitrião
-          %th Visitante(s)
-          %th Aprovado
-          %th Opções
+          %th= t "shows.datetime"
+          %th= t "models.hosts", count: 1
+          %th= t "models.visitors", count: 0
+          %th= t "shows.approved"
+          %th= t "shows.options"
 
       %tbody.data
         - @schedules.each do |schedule|
           %tr
-            %td= schedule.datetime
+            %td
+              - str = I18n.l schedule.datetime, format: :long
+              = str
+
             %td= link_to schedule.host.name, schedule.host
             %td
               - schedule.visitors.each do |v|
@@ -28,7 +31,8 @@
     - else
       %tr
         %td
-          %h3= t "Sem Agendamentos"
+          - str = (t "shows.none") + ' ' + (t "models.#{controller_name}", count: 2)
+          %h3= str
     %tbody.commands
       %tr
         %td{ colspan: 6}
