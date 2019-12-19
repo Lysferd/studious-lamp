@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_191739) do
     t.string "name"
     t.string "credential"
     t.string "email"
+    t.boolean "acquaintance", default: false
+    t.boolean "initiator", default: false
     t.integer "schedule_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

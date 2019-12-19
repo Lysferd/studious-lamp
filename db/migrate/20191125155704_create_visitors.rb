@@ -4,6 +4,8 @@ class CreateVisitors < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :credential
       t.string :email
+      t.boolean :acquaintance, default: false
+      t.boolean :initiator, default: false
       t.references :schedule, null: false, foreign_key: true
 
       t.timestamps
