@@ -10,7 +10,7 @@
     - unless @schedule.visitors.last == v
       ,
   em
-  = @schedule.datetime
+  = I18n.l @schedule.datetime, format: :long
   foi aprovado.
 
 %p= link_to 'Clique aqui para ver os detalhes', @schedule

@@ -1,0 +1,16 @@
+%h3 Uma nova visita foi agendada
+
+%p
+  Olá,
+  %br= @schedule.host.name
+  agendou uma visita com o(s) seguinte(s) visitante(s):
+  %br
+  - @schedule.visitors.each do |v|
+    = v.name
+    %br= "ID:" + v.credential
+    %br= "Email:" + v.email
+    %br
+    - unless @schedule.visitors.last == v
+      %br
+
+%sub Esse é um email automático. Favor não responder.

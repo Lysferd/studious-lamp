@@ -5,7 +5,8 @@ pt-BR:
   new_header: Cadastrando
   edit_header: Editando
   destroy_confirmation: "Os dados serão destruido permanentemente.\nDeseja prosseguir?"
-
+  acquaintance: "O anfitrião conhece pessoalmente o visitante"
+  initiator: "A iniciativa da visita é do visitante"
   shows:
     name: Nome
     credential: Credencial
@@ -17,6 +18,13 @@ pt-BR:
     approved: Aprovado
     pending: Pendente
     status: Status de Aprovação
+    acquaintance:
+      true: Visitante é um conhecido
+      false: Visitante não é um conhecido
+    initiator:
+      true: Iniciativa da visita é do visitante
+      false: Iniciativa da visita é do anfitrião
+    details: Detalhes
   headers:
     index: Listando
     show: Detalhes de

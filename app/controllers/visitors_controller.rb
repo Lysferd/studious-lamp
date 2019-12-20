@@ -69,6 +69,6 @@ class VisitorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visitor_params
-      params.require(:visitor).permit(:name, :credential, :schedule_id)
+      params.require(:visitor).permit(:name, :credential, :schedule_id, :acquaintance, :initiator)
     end
 end

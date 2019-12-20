@@ -16,3 +16,11 @@
 
   .field
     %input( required="required" type="text" name="schedule[visitors_attributes][#{index}][email]" id="schedule_visitors_attributes_#{index}_email" placeholder="Email")
+  
+  .field( style="display: block ruby; color: grey; margin-bottom: 0")
+    %input( type="checkbox" name="schedule[visitors_attributes][#{index}][acquaintance]" id="schedule_visitors_attributes_#{index}_acquaintance" )
+    = label :acquaintance, (t "acquaintance")
+
+  .field( style="display: block ruby; color: grey;")
+    %input( type="checkbox" name="schedule[visitors_attributes][#{index}][initiator]" id="schedule_visitors_attributes_#{index}_initiator" )
+    = label :initiator, (t "initiator")

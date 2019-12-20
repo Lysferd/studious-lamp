@@ -1,0 +1,10 @@
+%h3 Seu agendamento foi aprovado
+
+%p
+  O seu agendamento com
+  = @schedule.host.name
+  em
+  = I18n.l @schedule.datetime, format: :long
+  foi aprovado.
+
+%sub Esse é um email automático. Favor não responder.

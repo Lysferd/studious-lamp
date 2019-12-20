@@ -74,6 +74,8 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       if schedule.update( approved: true )
         SchedulingMailer.with(schedule: schedule).approval_email.deliver_now
+        SchedulingMailer.with(schedule: schedule).approval_email_for_visitor.deliver_now
+        SchedulingMailer.with(schedule: schedule).approval_email_for_reception.deliver_now
         format.html { redirect_to schedule }
       end
     end
@@ -96,7 +98,7 @@ class SchedulesController < ApplicationController
       params.require(:schedule).
         permit(:datetime,
                host_attributes: [ :name, :credential, :email ],
-               visitors_attributes: [ :name, :credential, :email ])
+               visitors_attributes: [ :name, :credential, :email , :acquaintance, :initiator])
     end
 
 end

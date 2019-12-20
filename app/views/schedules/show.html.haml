@@ -17,7 +17,7 @@
       %tr
         %td.bold= t "models.hosts", count: 1
         %td
-          - str = @schedule.host.name + ' (ID:' + @schedule.host.credential + ')'
+          - str = @schedule.host.name + ' (ID: ' + @schedule.host.credential + ')'
           = str
           %br
           = @schedule.host.email
@@ -25,10 +25,14 @@
         %td.bold= t "models.visitors", count: 0
         %td
           - @schedule.visitors.each do |v|
-            - str = (v.name) + (' (ID:') + (v.credential) + (')')
+            - str = (v.name) + (' (ID: ') + (v.credential) + (')')
             = str
             %br
             = v.email
+            %br
+            = t "shows.acquaintance.#{v.acquaintance}"
+            %br
+            = t "shows.initiator.#{v.initiator}"
             - if v != @schedule.visitors.last
               %hr
       %tr

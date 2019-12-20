@@ -13,4 +13,17 @@ class SchedulingMailer < ApplicationMailer
     @email = @schedule.host.email
     mail to: @email, subject: 'Agendamento de Visita Aprovado'
   end
+
+  def approval_email_for_visitor
+    @schedule = params[:schedule]
+    @emails = @schedule.visitors.map(&:email).join ?,
+    mail to: @emails, subject: 'Agendamento de Visita Aprovado'
+  end
+
+  def approval_email_for_reception
+    @schedule = params[:schedule]
+    user = User.first
+    @email = user.email # Change this later to the reception email
+    mail to: @email, subject: 'Agendamento de Visita Aprovado'
+  end
 end
